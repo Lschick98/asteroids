@@ -4,5 +4,14 @@ from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED, PLAYER_SPEED
 
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
-        super().__init__(x, y, PLAYER_RADIUS)
+        super().__init__(x, y, radius)
         self.rotation = 0
+        self.radius = radius
+
+    def draw(self, screen):
+        pygame.draw.circle(screen, "white", tuple(map(int, self.position)), self.radius, width=2)
+
+    def update(self, dt):
+        self.position += (self.velocity * dt)
+    
+  
